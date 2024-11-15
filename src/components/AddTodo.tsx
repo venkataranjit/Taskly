@@ -85,8 +85,9 @@ const AddTodo: FC = () => {
         .catch((error) => {
           console.error('Error submitting data:', error);
         })
-        .finally(() => setSubmitted(false)); // Reset submission flag
+        .finally(() => setSubmitted(false)); 
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [submitted, todoState.addTodo]);
 
   return (

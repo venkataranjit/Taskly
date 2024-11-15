@@ -1,165 +1,64 @@
 {
   "users": [
     {
-      "id": "1",
-      "username": "john_doe",
-      "email": "johndoe@example.com",
-      "phone": "+1234567890",
-      "password": "john"
-    },
-    {
-      "id": "2",
-      "username": "ranjit",
-      "email": "ranjit@gmail.com",
-      "phone": "+0987654321",
-      "password": "ranjit"
-    },
-    {
-      "id": "bf83",
-      "userName": "aparna",
-      "email": "aparna@gmail.com",
-      "phone": "9553500003",
-      "password": "0p;/)P:?",
-      "errorMsg": ""
-    },
-    {
-      "id": "3ade",
-      "userName": "aparna",
-      "email": "aparna@gmail.com",
-      "phone": "9553500003",
-      "password": "0p;/)P:?",
-      "errorMsg": ""
-    },
-    {
-      "id": "bdcd",
-      "userName": "aparna",
-      "email": "aparna@gmail.com",
-      "phone": "9553500003",
-      "password": "0p;/)P:?",
-      "errorMsg": ""
-    },
-    {
-      "id": "1731585021292",
-      "userName": "aparna",
-      "email": "aparna@gmail.com",
-      "phone": "9553500003",
-      "password": "0p;/)P:?",
-      "errorMsg": ""
-    },
-    {
-      "id": "1731585041996",
-      "userName": "suresh",
-      "email": "suresh@gmail.com",
-      "phone": "9876543210",
-      "password": "9ol.(OL>"
-    },
-    {
-      "id": "1731585141318",
-      "userName": "suresh",
-      "email": "suresh@gmail.com",
-      "phone": "9876543210",
-      "password": "9ol.(OL>"
-    },
-    {
-      "id": "1731585144307",
-      "userName": "suresh",
-      "email": "suresh@gmail.com",
-      "phone": "9876543210",
-      "password": "9ol.(OL>"
-    },
-    {
-      "id": "1731585162302",
-      "userName": "suresh",
-      "email": "suresh@gmail.com",
-      "phone": "9876543210",
-      "password": "9ol.(OL>"
-    },
-    {
-      "id": "1731585219480",
-      "userName": "nagu",
-      "email": "nagu@gmail.com",
-      "phone": "7418529630",
-      "password": "7ujm&UJM"
-    },
-    {
-      "id": "1731585735921",
-      "userName": "final",
-      "email": "final@gmial.com",
-      "phone": "9874563210",
-      "password": "ujm8*(OL>"
-    },
-    {
-      "id": 1731656012466,
-      "userName": "aaa",
-      "email": "aaa@gmail.com",
-      "phone": "8796541236",
-      "password": "6yhn^YHN",
-      "loggedIn": false
-    },
-    {
-      "id": 1731660891700,
-      "register": {
-        "userName": "4432",
-        "email": "venkataranjit@live.com",
-        "phone": "4442333336",
-        "password": "8ik,*IK<"
-      },
-      "login": {
-        "userName": "",
-        "email": "",
-        "phone": "",
-        "password": "",
-        "loggedIn": false
-      }
-    },
-    {
-      "id": 1731661106826,
-      "userName": "newuser",
-      "email": "newuser@gmail.com",
-      "phone": "9874563210",
-      "password": "6yhn^YHN"
-    },
-    {
-      "id": 1731664742754,
-      "userName": "Ranjit",
+      "id": 1731687981277,
+      "userName": "victory ranjit",
       "email": "victoryranjit@gmail.com",
       "phone": "9966189948",
       "password": "0p;/)P:?"
     },
     {
-      "id": 1731667122074,
-      "userName": "Venkata Ranjit",
-      "email": "venkataranjit@live.com",
-      "phone": "9966189948",
+      "id": 1731692848768,
+      "userName": "Aparna",
+      "email": "aparna@gmail.com",
+      "phone": "9553500003",
       "password": "0p;/)P:?"
     }
   ],
   "todos": [
     {
-      "id": "101",
-      "userId": 1,
-      "todoTitle": "Plan weekend getaway",
-      "todoDescription": "Research and book accommodations for the weekend",
-      "priority": "low",
-      "createdAt": "2024-02-27T12:00:30Z",
-      "updatedAt": "2024-02-28T08:45:20Z"
-    },
-    {
-      "id": "102",
-      "userId": 2,
-      "todoTitle": "Finish project report",
-      "todoDescription": "Complete the final report for the project",
+      "id": 1731688037584,
+      "userId": 1731687981277,
+      "todoTitle": "First Todo",
+      "todoDescription": "This is My First Todo",
       "priority": "high",
-      "createdAt": "2024-02-25T09:15:00Z",
-      "updatedAt": "2024-02-26T11:00:00Z"
+      "createdAt": 1731688037584,
+      "updatedAt": ""
     },
     {
-      "id": 1731674260789,
-      "userId": 1731667122074,
-      "todoTitle": "second",
-      "todoDescription": "second",
+      "id": 1731692781988,
+      "userId": 1731687981277,
+      "todoTitle": "second Todo",
+      "todoDescription": "second Todo",
       "priority": "low",
-      "createdAt": 1731674260789,
+      "createdAt": 1731692781988,
+      "updatedAt": ""
+    },
+    {
+      "id": 1731692881876,
+      "userId": 1731692848768,
+      "todoTitle": "Aparna Todo",
+      "todoDescription": "This is Todo From Aparna",
+      "priority": "medium",
+      "createdAt": 1731692881876,
+      "updatedAt": ""
+    },
+    {
+      "id": 1731693837921,
+      "userId": 1731687981277,
+      "todoTitle": "third todo",
+      "todoDescription": "this is third todo",
+      "priority": "medium",
+      "createdAt": 1731693837921,
+      "updatedAt": ""
+    },
+    {
+      "id": 1731693891920,
+      "userId": 1731687981277,
+      "todoTitle": "fourth todo",
+      "todoDescription": "this is fourth todo",
+      "priority": "high",
+      "createdAt": 1731693891920,
       "updatedAt": ""
     }
   ]

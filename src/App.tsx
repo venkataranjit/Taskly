@@ -52,7 +52,7 @@ const App: FC = () => {
               path='/todos'
               element={
                 <ProtectedRoute loggedIn={state.login.loggedIn}>
-                  <MyTodos />
+                  <MyTodos userId={state.login.id } />
                 </ProtectedRoute>
               }
             />
