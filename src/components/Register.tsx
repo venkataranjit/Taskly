@@ -93,7 +93,7 @@ const Register: FC = () => {
         })
         .finally(() => setSubmitted(false)); // Reset submission flag
     }
-  }, [submitted]);
+  }, [state.register, submitted]);
 
   return (
     <div>

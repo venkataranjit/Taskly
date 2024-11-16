@@ -38,7 +38,6 @@ const MyTodos: FC<MyTodosProps> = ({ userId }) => {
   React.useEffect(() => {
     getTodoData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    console.log(todos);
   }, []);
   return (
     <>
