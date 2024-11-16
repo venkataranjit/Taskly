@@ -32,7 +32,7 @@ const Login: FC = () => {
   const loginFormSubmitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.get("http://localhost:3005/users");
+      const response = await axios.get(`${API_KEY}/users`);
       const user = response.data.find(
         (u: { email: string; password: string }) =>
           u.email === loginForm.email && u.password === loginForm.password
