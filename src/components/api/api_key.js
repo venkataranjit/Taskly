@@ -1,2 +1,2 @@
-const API_KEY = "http://localhost:3005";
+const API_KEY = "https://my-json-server-9vsu.onrender.com/";
 export default API_KEY;
