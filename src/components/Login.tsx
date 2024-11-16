@@ -2,6 +2,7 @@ import React, { FC, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
 import axios from "axios";
+import API_KEY from "./api/api_key";
 
 interface form {
   email: string;
