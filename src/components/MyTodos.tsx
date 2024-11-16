@@ -3,13 +3,14 @@ import React, { FC, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import API_KEY from "./api/api_key";
 
 interface MyTodosProps {
-  userId: number | string;
+  userId: string;
 }
 interface Todo {
-  id: number;
-  userId: number | string;
+  id: string;
+  userId: string;
   todoTitle: string;
   todoDescription: string;
   priority: "low" | "medium" | "high";
@@ -20,7 +21,7 @@ const MyTodos: FC<MyTodosProps> = ({ userId }) => {
 
   const getTodoData = async () => {
     try {
-      const response = await axios.get("http://localhost:3005/todos");
+      const response = await axios.get(`${API_KEY}/todos`);
       if (response.status === 200) {
         const filteredTodos = response.data.filter(
           (eachTodo: Todo) => eachTodo.userId === userId
@@ -37,6 +38,7 @@ const MyTodos: FC<MyTodosProps> = ({ userId }) => {
   React.useEffect(() => {
     getTodoData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    console.log(todos);
   }, []);
   return (
     <>
