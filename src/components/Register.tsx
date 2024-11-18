@@ -4,6 +4,7 @@ import { UserContext } from "./context/UserContext";
 import axios from "axios";
 import API_KEY from "./api/api_key";
 import Heading from "./Heading";
+import Loader from "./Loader";
 
 interface form {
   email: string;
@@ -31,6 +32,7 @@ const Register: FC = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -81,6 +83,7 @@ const Register: FC = () => {
 
   useEffect(() => {
     if (submitted) {
+      setIsLoading(true);
       axios
         .post(`${API_KEY}/users`, {
           ...state.register,
@@ -92,67 +95,87 @@ const Register: FC = () => {
         .catch((error) => {
           console.error("Error submitting data:", error);
         })
-        .finally(() => setSubmitted(false)); // Reset submission flag
+        .finally(() => {
+          setSubmitted(false);
+          setIsLoading(false);
+        });
     }
   }, [state.register, submitted]);
 
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    if (isLoading) {
+      timeout = setTimeout(() => {
+        setErrorMsg(
+          "Server is taking longer than expected to respond. Please wait..."
+        );
+      }, 10000);
+    }
+    return () => clearTimeout(timeout);
+  }, [isLoading]);
   return (
     <>
-      <form className="login-form" onSubmit={submitHandler}>
-        <Heading />
-        <p className="login-text">
-          <span className="fa-stack fa-lg">
-            <i className="fa fa-circle fa-stack-2x" />
-            <i className="fa fa-user fa-stack-1x" />
-          </span>
-        </p>
-        <input
-          type="text"
-          className="login-username"
-          autoFocus={true}
-          placeholder="User Name"
-          name="userName"
-          onChange={(e) => changeHandler(e)}
-          value={registerForm.userName}
-        />
-        <input
-          type="tel"
-          className="login-username"
-          placeholder="Phone Number"
-          name="phone"
-          onChange={(e) => changeHandler(e)}
-          value={registerForm.phone}
-        />
-        <input
-          type="text"
-          className="login-username"
-          placeholder="Email"
-          name="email"
-          onChange={(e) => changeHandler(e)}
-          value={registerForm.email}
-        />
-        <input
-          type="password"
-          className="login-password"
-          placeholder="Password"
-          name="password"
-          onChange={(e) => changeHandler(e)}
-          value={registerForm.password}
-        />
-        <input
-          type="submit"
-          name="Login"
-          defaultValue="Login"
-          className="login-submit"
-        />
-      </form>
-      {errorMsg && <p className="error text-center">{errorMsg}</p>}
-      {successMsg && <p className="success text-center">{successMsg}</p>}
-      <Link to="/login" className="login-forgot-pass">
-        Already Have an Account? Login Here
-      </Link>
-      <div className="underlay-photo" />
-      <div className="underlay-black" />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <form className="login-form" onSubmit={submitHandler}>
+            <Heading />
+            <p className="login-text">
+              <span className="fa-stack fa-lg">
+                <i className="fa fa-circle fa-stack-2x" />
+                <i className="fa fa-user fa-stack-1x" />
+              </span>
+            </p>
+            <input
+              type="text"
+              className="login-username"
+              autoFocus={true}
+              placeholder="User Name"
+              name="userName"
+              onChange={(e) => changeHandler(e)}
+              value={registerForm.userName}
+            />
+            <input
+              type="tel"
+              className="login-username"
+              placeholder="Phone Number"
+              name="phone"
+              onChange={(e) => changeHandler(e)}
+              value={registerForm.phone}
+            />
+            <input
+              type="text"
+              className="login-username"
+              placeholder="Email"
+              name="email"
+              onChange={(e) => changeHandler(e)}
+              value={registerForm.email}
+            />
+            <input
+              type="password"
+              className="login-password"
+              placeholder="Password"
+              name="password"
+              onChange={(e) => changeHandler(e)}
+              value={registerForm.password}
+            />
+            <input
+              type="submit"
+              name="Login"
+              defaultValue="Login"
+              className="login-submit"
+            />
+          </form>
+          {errorMsg && <p className="error text-center">{errorMsg}</p>}
+          {successMsg && <p className="success text-center">{successMsg}</p>}
+          <Link to="/login" className="login-forgot-pass">
+            Already Have an Account? Login Here
+          </Link>
+          <div className="underlay-photo" />
+          <div className="underlay-black" />
+        </>
+      )}
     </>
   );
 };
