@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
 import axios from "axios";
 import API_KEY from "./api/api_key";
+import Heading from "./Heading";
 
 interface form {
   email: string;
@@ -96,8 +97,9 @@ const Register: FC = () => {
   }, [state.register, submitted]);
 
   return (
-    <div>
+    <>
       <form className="login-form" onSubmit={submitHandler}>
+        <Heading />
         <p className="login-text">
           <span className="fa-stack fa-lg">
             <i className="fa fa-circle fa-stack-2x" />
@@ -151,7 +153,7 @@ const Register: FC = () => {
       </Link>
       <div className="underlay-photo" />
       <div className="underlay-black" />
-    </div>
+    </>
   );
 };
 

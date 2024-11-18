@@ -52,7 +52,7 @@ input {
   margin: auto;
   max-width: 40%;
   padding: 0.5rem;
-  margin-top: 75px;
+  margin-top: 50px;
 }
 .login-text {
   //background: hsl(40,30,60);
@@ -272,4 +272,8 @@ input {
   right: -15px;
   top: -30px;
   padding: 17px;
+}
+.app-heading {
+  color: #fff;
+  text-align: center;
 }

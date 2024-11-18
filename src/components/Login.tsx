@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
 import axios from "axios";
 import API_KEY from "./api/api_key";
+import Heading from "./Heading";
 
 interface form {
   email: string;
@@ -54,45 +55,44 @@ const Login: FC = () => {
 
   return (
     <>
-      <div>
-        <form className="login-form" onSubmit={loginFormSubmitHandler}>
-          <p className="login-text">
-            <span className="fa-stack fa-lg">
-              <i className="fa fa-circle fa-stack-2x" />
-              <i className="fa fa-lock fa-stack-1x" />
-            </span>
-          </p>
-          <input
-            type="text"
-            className="login-username"
-            autoFocus={true}
-            placeholder="Email"
-            name="email"
-            value={loginForm.email}
-            onChange={changeHandler}
-          />
-          <input
-            type="password"
-            className="login-password"
-            placeholder="Password"
-            name="password"
-            value={loginForm.password}
-            onChange={changeHandler}
-          />
-          <input
-            type="submit"
-            name="Login"
-            defaultValue="Login"
-            className="login-submit"
-          />
-        </form>
-        {loginError && <p className="error text-center">{loginError}</p>}
-        <Link to="/register" className="login-forgot-pass">
-          Register User
-        </Link>
-        <div className="underlay-photo" />
-        <div className="underlay-black" />
-      </div>
+      <form className="login-form" onSubmit={loginFormSubmitHandler}>
+        <Heading />
+        <p className="login-text">
+          <span className="fa-stack fa-lg">
+            <i className="fa fa-circle fa-stack-2x" />
+            <i className="fa fa-lock fa-stack-1x" />
+          </span>
+        </p>
+        <input
+          type="text"
+          className="login-username"
+          autoFocus={true}
+          placeholder="Email"
+          name="email"
+          value={loginForm.email}
+          onChange={changeHandler}
+        />
+        <input
+          type="password"
+          className="login-password"
+          placeholder="Password"
+          name="password"
+          value={loginForm.password}
+          onChange={changeHandler}
+        />
+        <input
+          type="submit"
+          name="Login"
+          defaultValue="Login"
+          className="login-submit"
+        />
+      </form>
+      {loginError && <p className="error text-center">{loginError}</p>}
+      <Link to="/register" className="login-forgot-pass">
+        Register User
+      </Link>
+      <div className="underlay-photo" />
+      <div className="underlay-black" />
     </>
   );
 };
