@@ -63,7 +63,7 @@ const AddTodo: FC = () => {
       });
       setSubmitted(true);
       setAddTodo(initialTodo);
-      setSuccessMsg("Todo Created Succesfully");
+      setSuccessMsg("Task Created Succesfully");
       setTimeout(() => {
         setSuccessMsg("");
       }, 3000);

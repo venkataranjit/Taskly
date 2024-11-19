@@ -64,20 +64,40 @@ const Register: FC = () => {
     }
   };
 
-  const submitHandler = (e: React.FormEvent) => {
+  const submitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     const isValid = errorHandling();
     if (isValid) {
-      dispatch({
-        type: "ADD_USER",
-        payload: registerForm,
-      });
-      setSubmitted(true);
-      setRegisterForm(initialForm);
-      setSuccessMsg("User Created Succesfully");
-      setTimeout(() => {
-        setSuccessMsg("");
-      }, 3000);
+      setIsLoading(true);
+      try {
+        const response = await axios.get(
+          `${API_KEY}/users?email=${registerForm.email}`
+        );
+        if (response.data.length > 0) {
+          setErrorMsg(
+            "Email ID is already registered. Please use a different email."
+          );
+          setIsLoading(false);
+          return;
+        }
+        dispatch({
+          type: "ADD_USER",
+          payload: registerForm,
+        });
+        setSubmitted(true);
+        setRegisterForm(initialForm);
+        setSuccessMsg("User Created Succesfully");
+        setTimeout(() => {
+          setSuccessMsg("");
+        }, 3000);
+      } catch (error) {
+        console.error("Error checking email:", error);
+        setErrorMsg(
+          "An error occurred while verifying the email. Please try again."
+        );
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -109,7 +129,7 @@ const Register: FC = () => {
         setErrorMsg(
           "Server is taking longer than expected to respond. Please wait..."
         );
-      }, 10000);
+      }, 100000);
     }
     return () => clearTimeout(timeout);
   }, [isLoading]);
@@ -119,7 +139,7 @@ const Register: FC = () => {
         <Loader />
       ) : (
         <>
-          <form className="login-form" onSubmit={submitHandler}>
+          <form className="login-form register-form" onSubmit={submitHandler}>
             <Heading />
             <p className="login-text">
               <span className="fa-stack fa-lg">

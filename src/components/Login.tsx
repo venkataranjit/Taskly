@@ -35,8 +35,9 @@ const Login: FC = () => {
 
   const loginFormSubmitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
+
     try {
+      setIsLoading(true);
       const response = await axios.get(`${API_KEY}/users`);
       const user = response.data.find(
         (u: { email: string; password: string }) =>
@@ -64,7 +65,7 @@ const Login: FC = () => {
         setLoginError(
           "Server is taking longer than expected to respond. Please wait..."
         );
-      }, 10000); // 10 seconds delay
+      }, 100000);
     }
     return () => clearTimeout(timeout);
   }, [isLoading]);

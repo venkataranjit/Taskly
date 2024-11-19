@@ -19,7 +19,7 @@ body {
   font-weight: 100;
   // display: flex;
   // overflow: hidden;
-  margin-bottom: 40px; /* Margin bottom by footer height */
+  margin-bottom: 90px !important; /* Margin bottom by footer height */
 }
 input {
   ::-webkit-input-placeholder {
@@ -53,6 +53,9 @@ input {
   max-width: 40%;
   padding: 0.5rem;
   margin-top: 50px;
+}
+.register-form {
+  margin-top: 20px;
 }
 .login-text {
   //background: hsl(40,30,60);

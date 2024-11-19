@@ -37,10 +37,10 @@ const MyTodos: FC<MyTodosProps> = ({ userId }) => {
         );
         setTodos(filteredTodos);
       } else {
-        throw new Error("Todos Not Fetched");
+        throw new Error("Tasks Not Fetched");
       }
     } catch (error) {
-      setErrorMsg("Failed to fetch todos. Please try again.");
+      setErrorMsg("Failed to fetch Tasks. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -59,7 +59,7 @@ const MyTodos: FC<MyTodosProps> = ({ userId }) => {
           setSuccessMsg("");
         }, 3000);
       } else {
-        throw new Error("Todo Not Deleted");
+        throw new Error("Task Not Deleted");
       }
     } catch (e: any) {
       setErrorMsg(e.message);
@@ -74,10 +74,10 @@ const MyTodos: FC<MyTodosProps> = ({ userId }) => {
 
   const saveHandler = async (updatedTodo: Todo) => {
     try {
-      const response = await axios.put(
-        `${API_KEY}/todos/${updatedTodo.id}`,
-        updatedTodo
-      );
+      const response = await axios.put(`${API_KEY}/todos/${updatedTodo.id}`, {
+        ...updatedTodo,
+        updatedAt: Date.now(),
+      });
       if (response.status === 200) {
         setTodos((prevTodos) =>
           prevTodos.map((todo) =>
@@ -88,7 +88,7 @@ const MyTodos: FC<MyTodosProps> = ({ userId }) => {
         setTimeout(() => setSuccessMsg(""), 3000);
         setEditTodoId(null); // Exit editing mode
       } else {
-        throw new Error("Todo Not Updated");
+        throw new Error("Task Not Updated");
       }
     } catch (e: any) {
       setErrorMsg(e.message);
@@ -173,7 +173,7 @@ const MyTodos: FC<MyTodosProps> = ({ userId }) => {
           })}
         </Row>
       ) : (
-        <p>Please Add a Todo to View Here</p>
+        <p>No Tasks to Display</p>
       )}
       {successMsg && <p className="success text-center">{successMsg}</p>}
       {errorMsg && <p className="error text-center">{errorMsg}</p>}

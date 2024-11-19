@@ -42,10 +42,10 @@ const NavBar: FC = () => {
               Home
             </Nav.Link>
             <Nav.Link as={NavLink} to="/addtodos">
-              Add Todo
+              Add Task
             </Nav.Link>
             <Nav.Link as={NavLink} to="/todos">
-              My Todos
+              My Tasks
             </Nav.Link>
           </Nav>
           <Nav>
