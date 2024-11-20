@@ -181,7 +181,7 @@ input {
 }
 
 .loader {
-  position: relative;
+  position: absolute;
    top: calc(100vh - 50px);
   left: calc(100% - 50px);
   width: 50px;
