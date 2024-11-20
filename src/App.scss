@@ -254,3 +254,37 @@ input {
   margin-top: 5px;
   border: 1px solid #adabab;
 }
+
+.section {
+  padding: 4rem 2rem;
+}
+
+.section .error2 {
+  font-size: 150px;
+  color: #333;
+}
+
+.page {
+  margin: 2rem 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #444;
+}
+
+.back-home {
+  display: inline-block;
+  border: 2px solid #222;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.75rem 1rem 0.6rem;
+  transition: all 0.2s linear;
+  box-shadow: 0 15px 15px -11px rgba(0, 0, 0, 0.4);
+  background: #222;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.back-home:hover {
+  background: #222;
+  color: #ddd;
+}

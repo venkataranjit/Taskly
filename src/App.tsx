@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { UserContext } from "./components/context/UserContext";
 import Loader from "./components/Loader";
+import ErrorPage from "./components/ErrorPage";
 
 const Home = lazy(() => import("./components/Home"));
 const Register = lazy(() => import("./components/Register"));
@@ -33,11 +34,12 @@ const App: FC = () => {
 
           <Container>
             <Routes>
+              <Route path="/home" element={<Home />} />
               <Route path="/" element={<Login />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/register" element={<Register />} />
-              <Route path="*" element={<Home />} />
+              <Route path="*" element={<ErrorPage />} />
               <Route
                 path="/addtodos"
                 element={

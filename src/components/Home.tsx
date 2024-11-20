@@ -1,13 +1,6 @@
-import React, { FC, useContext } from "react";
-import { UserContext } from "./context/UserContext";
+import React, { FC } from "react";
 
 const Home: FC = () => {
-  const context = useContext(UserContext);
-  if (!context) {
-    throw new Error("RegisterContext must be used within a RegisterProvider");
-  }
-
-  const { state } = context;
   return (
     <>
       <h3>Home</h3>

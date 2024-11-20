@@ -1,11 +1,7 @@
 import React, { FC } from "react";
 
 const Loader: FC = () => {
-  return (
-   
-      <div className="loader"></div>
-
-  );
+  return <div className="loader"></div>;
 };
 
 export default Loader;

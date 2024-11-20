@@ -76,7 +76,7 @@ const CompletedTodos: FC<MyTodosProps> = ({ userId }) => {
       <div className="row mb-3">
         <div className="col-sm-7">
           <h5>
-            Completed Tasks
+            Completed Tasks{" "}
             <span className="badge text-bg-dark">{todos.length}</span>
           </h5>
         </div>
