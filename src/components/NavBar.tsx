@@ -34,7 +34,7 @@ const NavBar: FC = () => {
   };
 
   const handleLinkClick = () => {
-    setExpanded((prev) => !prev); // Collapse the Navbar
+    setExpanded(false);
   };
 
   return (
