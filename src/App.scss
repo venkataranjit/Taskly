@@ -181,9 +181,9 @@ input {
 }
 
 .loader {
-  position: absolute;
-   top: calc(100vh - 50px);
-  left: calc(100% - 50px);
+    position: absolute;
+  top: calc(50vh - 25px);
+  left: calc(50% - 25px);
   width: 50px;
   --b: 8px;
   aspect-ratio: 1;
