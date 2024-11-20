@@ -1,9 +1,7 @@
 import axios from "axios";
 import React, { FC, useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Dropdown from "react-bootstrap/Dropdown";
 
 import API_KEY from "./api/api_key";
 import Loader from "./Loader";
@@ -23,7 +21,6 @@ interface Todo {
 
 const CompletedTodos: FC<MyTodosProps> = ({ userId }) => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
@@ -139,7 +136,6 @@ const CompletedTodos: FC<MyTodosProps> = ({ userId }) => {
       ) : (
         <p>No Tasks to Display</p>
       )}
-      {successMsg && <p className="success text-center">{successMsg}</p>}
       {errorMsg && <p className="error text-center">{errorMsg}</p>}
     </>
   );
