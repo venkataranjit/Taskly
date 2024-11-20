@@ -182,8 +182,8 @@ input {
 
 .loader {
   position: relative;
-  top: calc(100% - 50px);
-  left: calc(100vh - 50px);
+   top: calc(100vh - 50px);
+  left: calc(100% - 50px);
   width: 50px;
   --b: 8px;
   aspect-ratio: 1;
