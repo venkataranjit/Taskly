@@ -12,8 +12,9 @@ import Loader from "./components/Loader";
 const Home = lazy(() => import("./components/Home"));
 const Register = lazy(() => import("./components/Register"));
 const UserName = lazy(() => import("./components/UserName"));
-const MyTodos = lazy(() => import("./components/MyTodos"));
 const AddTodo = lazy(() => import("./components/AddTodo"));
+const MyTodos = lazy(() => import("./components/MyTodos"));
+const CompletedTodos = lazy(() => import("./components/CompletedTodos"));
 
 const App: FC = () => {
   const context = useContext(UserContext);
@@ -35,15 +36,8 @@ const App: FC = () => {
               <Route path="/" element={<Login />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-
-              <Route
-                path="/home"
-                element={
-                  <ProtectedRoute loggedIn={state.login.loggedIn}>
-                    <Home />
-                  </ProtectedRoute>
-                }
-              />
+              <Route path="/register" element={<Register />} />
+              <Route path="*" element={<Home />} />
               <Route
                 path="/addtodos"
                 element={
@@ -57,6 +51,14 @@ const App: FC = () => {
                 element={
                   <ProtectedRoute loggedIn={state.login.loggedIn}>
                     <MyTodos userId={state.login.id} />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/completedtodos"
+                element={
+                  <ProtectedRoute loggedIn={state.login.loggedIn}>
+                    <CompletedTodos userId={state.login.id} />
                   </ProtectedRoute>
                 }
               />

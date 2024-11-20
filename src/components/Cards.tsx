@@ -9,16 +9,26 @@ interface Todo {
   todoTitle: string;
   todoDescription: string;
   priority: "low" | "medium" | "high";
+  isCompleted: string | undefined;
 }
 
 const Cards: FC<{
   eachTodo: Todo;
   todoDeleteHandler: (id: string) => void;
   editHandler: (id: string) => void;
-  saveHandler: (updatedTodo: Todo) => void;
+  saveHandler: (updatedTodo: Todo) => Promise<void>;
+  completeHandler: (id: string) => void;
   isEditing: boolean;
-}> = ({ eachTodo, todoDeleteHandler, editHandler, saveHandler, isEditing }) => {
+}> = ({
+  eachTodo,
+  todoDeleteHandler,
+  editHandler,
+  saveHandler,
+  completeHandler,
+  isEditing,
+}) => {
   const [editTodo, setEditTodo] = React.useState(eachTodo);
+
   return (
     <Card
       bg={
@@ -51,14 +61,14 @@ const Cards: FC<{
           eachTodo.todoTitle
         )}
         <Dropdown>
-          <Dropdown.Toggle
-            variant="success"
-            id="dropdown-basic"
-          ></Dropdown.Toggle>
+          <Dropdown.Toggle id="dropdown-basic"></Dropdown.Toggle>
 
           <Dropdown.Menu>
             <Dropdown.Item onClick={() => editHandler(eachTodo.id)}>
               Edit
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => completeHandler(eachTodo.id)}>
+              Completed
             </Dropdown.Item>
             <Dropdown.Item onClick={() => todoDeleteHandler(eachTodo.id)}>
               Delete

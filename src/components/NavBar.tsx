@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import React, { FC, useContext, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -15,6 +15,8 @@ const logoutUser = {
   loggedIn: false,
 };
 const NavBar: FC = () => {
+  const [expanded, setExpanded] = useState(false);
+
   const context = useContext(UserContext);
   if (!context) {
     throw new Error("RegisterContext must be used within a RegisterProvider");
@@ -27,32 +29,54 @@ const NavBar: FC = () => {
       type: "LOGOUT_USER",
       payload: logoutUser,
     });
+    setExpanded(false);
     navigate("/login");
+  };
+
+  const handleLinkClick = () => {
+    setExpanded((prev) => !prev); // Collapse the Navbar
   };
 
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar expand="lg" bg="dark" data-bs-theme="dark" expanded={expanded}>
         <Container>
-          <Navbar.Brand as={NavLink} to="/home">
-            Todo App
+          <Navbar.Brand as={NavLink} to="/home" onClick={handleLinkClick}>
+            Taskly
           </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link as={NavLink} to="/home">
-              Home
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/addtodos">
-              Add Task
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/todos">
-              My Tasks
-            </Nav.Link>
-          </Nav>
-          <Nav>
-            <Nav.Link as={Button} onClick={logout} className="logout">
-              Logout
-            </Nav.Link>
-          </Nav>
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            onClick={() => setExpanded((prev) => !prev)}
+          />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link as={NavLink} to="/home" onClick={handleLinkClick}>
+                Home
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/addtodos" onClick={handleLinkClick}>
+                Add Task
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/todos" onClick={handleLinkClick}>
+                Pending Tasks
+              </Nav.Link>
+              <Nav.Link
+                as={NavLink}
+                to="/completedtodos"
+                onClick={handleLinkClick}
+              >
+                Completed Tasks
+              </Nav.Link>
+            </Nav>
+            <Nav>
+              <Nav.Link
+                as={Button}
+                onClick={logout}
+                className="logout text-start"
+              >
+                Logout
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </>

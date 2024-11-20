@@ -90,10 +90,11 @@ const Register: FC = () => {
         setTimeout(() => {
           setSuccessMsg("");
         }, 3000);
-      } catch (error) {
-        console.error("Error checking email:", error);
+      } catch (error: any) {
         setErrorMsg(
-          "An error occurred while verifying the email. Please try again."
+          `An error occurred while verifying the email. Please try again, ${
+            error.message
+          }`
         );
       } finally {
         setIsLoading(false);
@@ -109,11 +110,15 @@ const Register: FC = () => {
           ...state.register,
           id: String(Date.now()),
         })
-        .then((response) => {
-          console.log("Data submitted successfully:", response.data);
+        .then((response: any) => {
+          console.log(
+            `Data submitted successfully:, ${JSON.stringify(response.data)}`
+          );
         })
-        .catch((error) => {
-          console.error("Error submitting data:", error);
+        .catch((error: any) => {
+          const errorMessage =
+            error?.message || "An error occurred while submitting the data.";
+          console.log(`Error submitting data: ${errorMessage}`);
         })
         .finally(() => {
           setSubmitted(false);

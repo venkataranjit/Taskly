@@ -15,6 +15,7 @@ interface Todo {
   todoTitle: string;
   todoDescription: string;
   priority: "low" | "medium" | "high";
+  isCompleted: string | undefined;
 }
 
 const MyTodos: FC<MyTodosProps> = ({ userId }) => {
@@ -33,7 +34,10 @@ const MyTodos: FC<MyTodosProps> = ({ userId }) => {
       const response = await axios.get(`${API_KEY}/todos`);
       if (response.status === 200) {
         const filteredTodos = response.data.filter(
-          (eachTodo: Todo) => eachTodo.userId === userId
+          (eachTodo: Todo) =>
+            eachTodo.userId === userId &&
+            (eachTodo.isCompleted === "" ||
+              !eachTodo.hasOwnProperty("isCompleted"))
         );
         setTodos(filteredTodos);
       } else {
@@ -95,6 +99,31 @@ const MyTodos: FC<MyTodosProps> = ({ userId }) => {
     }
   };
 
+  const completeHandler = async (id: string) => {
+    try {
+      setLoading(true);
+      const response = await axios.patch(`${API_KEY}/todos/${id}`, {
+        isCompleted: "completed",
+      });
+
+      if (response.status === 200) {
+        setSuccessMsg("Task marked as completed successfully!");
+        setTodos((prevTodos) =>
+          prevTodos.filter((todo: Todo) => todo.id !== id)
+        );
+        setTimeout(() => {
+          setSuccessMsg("");
+        }, 3000);
+      } else {
+        throw new Error("Failed to mark the task as completed");
+      }
+    } catch (error: any) {
+      setErrorMsg("An error occurred. Please try again." + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   React.useEffect(() => {
     getTodoData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -124,7 +153,7 @@ const MyTodos: FC<MyTodosProps> = ({ userId }) => {
       <div className="row mb-3">
         <div className="col-sm-7">
           <h5>
-            MyTodos <span className="badge text-bg-dark">{todos.length}</span>
+            My Tasks <span className="badge text-bg-dark">{todos.length}</span>
           </h5>
         </div>
 
@@ -166,6 +195,7 @@ const MyTodos: FC<MyTodosProps> = ({ userId }) => {
                   todoDeleteHandler={todoDeleteHandler}
                   editHandler={editHandler}
                   saveHandler={saveHandler}
+                  completeHandler={completeHandler}
                   isEditing={editTodoId === eachTodo.id}
                 />
               </Col>

@@ -47,11 +47,11 @@ const Login: FC = () => {
       if (user) {
         dispatch({ type: "LOGIN_USER", payload: user });
         setLoginError(null);
-        navigate("/home");
+        navigate("/addtodos");
       } else {
         setLoginError("Invalid email or password");
       }
-    } catch (error) {
+    } catch (error: any) {
       setLoginError("An error occurred while logging in" + error);
     } finally {
       setIsLoading(false);
