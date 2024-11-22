@@ -41,7 +41,7 @@ const Login: FC = () => {
       const response = await axios.get(`${API_KEY}/users`);
       const user = response.data.find(
         (u: { email: string; password: string }) =>
-          u.email === loginForm.email && u.password === loginForm.password
+          u.email.toLocaleLowerCase() === loginForm.email.toLocaleLowerCase() && u.password === loginForm.password
       );
 
       if (user) {
