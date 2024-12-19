@@ -93,9 +93,10 @@ const AddTodo: FC = () => {
 
   return (
     <>
-      <h5>Add Task</h5>
+      
       <div className="row addtodo">
         <div className="col-sm-4 offset-sm-4">
+        <h5>Add Task</h5>
           <form onSubmit={addTodoSubmitHandler}>
             <Card bg="light">
               <div className="mb-3">

@@ -153,7 +153,7 @@ const MyTodos: FC<MyTodosProps> = ({ userId }) => {
       <div className="row mb-3">
         <div className="col-sm-7">
           <h5>
-            My Tasks <span className="badge text-bg-dark">{todos.length}</span>
+            Pending Tasks <span className="badge text-bg-dark">{todos.length}</span>
           </h5>
         </div>
 

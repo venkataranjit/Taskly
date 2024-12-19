@@ -36,7 +36,7 @@ const Register: FC = () => {
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setRegisterForm({ ...registerForm, [name]: value });
+    setRegisterForm({ ...registerForm, [name]: value.trim() });
   };
 
   const errorHandling = (): boolean => {
